@@ -45,12 +45,7 @@ int main() {
             again = false;
         }
         
-        
-        
     }
-
-
-
 
     return 0;
 }
@@ -76,3 +71,4 @@ int main_menu() {
     // Return the option the user chose
     return choice;
 }
+// Pausing
