@@ -32,7 +32,22 @@ int main() {
     fin1.close();
 
     // Loops until user chooses to quit from menu
-    while(again){}
+    while(again){
+        int c = main_menu();
+
+        if (c = 1){
+            add_goat();
+        } else if (c = 2){
+            delete_goat();
+        } else if (c = 3){
+            // display goats
+        } else if (c = 4){
+            again = false;
+        }
+        
+        
+        
+    }
 
 
 
@@ -51,6 +66,12 @@ int main_menu() {
     cout << "[4] quit" << endl;
     cout << "Choice -->";
     cin >> choice;
+
+    // Make sure user's choice is on the menu
+    while(choice > 4 || choice < 1){
+        cout << "\nInvalid choice try again";
+        cin >> choice;
+    }
 
     // Return the option the user chose
     return choice;
