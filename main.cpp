@@ -31,9 +31,27 @@ int main() {
     while (fin1 >> colors[i++]);
     fin1.close();
 
+    // Loops until user chooses to quit from menu
+    while(again){}
+
 
 
 
     return 0;
 }
 
+int main_menu() {
+    int choice;
+
+    // Print out the menu for the user
+    cout << "*** Goata Manager 3001 ***" << endl;
+    cout << "[1] Add a goat" << endl;
+    cout << "[2] Delete a Goat" << endl;
+    cout << "[3] List goats" << endl;
+    cout << "[4] quit" << endl;
+    cout << "Choice -->";
+    cin >> choice;
+
+    // Return the option the user chose
+    return choice;
+}
