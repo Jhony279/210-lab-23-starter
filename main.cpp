@@ -56,7 +56,7 @@ int main() {
 }
 
 int main_menu() {
-    int choice;
+    int choice = 0;
 
     // Print out the menu for the user
     cout << "*** Goata Manager 3001 ***" << endl;
@@ -64,8 +64,9 @@ int main_menu() {
     cout << "[2] Delete a Goat" << endl;
     cout << "[3] List goats" << endl;
     cout << "[4] quit" << endl;
-    cout << "Choice -->";
+    cout << "Choice --> ";
     cin >> choice;
+    cout << choice << endl;
 
     // Make sure user's choice is on the menu
     while(choice > 4 || choice < 1){
