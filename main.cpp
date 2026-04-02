@@ -39,16 +39,14 @@ int main() {
 
         if (c == 1){
             add_goat(trip, names, colors);
-            cout << "Adding goat..." << endl;
 
         } else if (c == 2){
-            // delete_goat();
-            cout << "Deleting goat..." << endl;
+            delete_goat(trip);
 
         } else if (c == 3){
+            display_trip(trip);
             selection = select_goat(trip);
             if (selection == -1) continue; // No goats to display
-            cout << "Displaying goats..." << endl;
 
         } else if (c == 4){
             again = false;
@@ -81,6 +79,19 @@ int main_menu() {
     return choice;
 }
 
+void display_trip(list<Goat> trip) {
+    if (trip.empty()) {
+        cout << "No goats in the trip to display." << endl;
+        return; // Exit the function if there are no goats
+    }
+
+    int index = 1;
+    for (const auto& goat : trip) {
+        cout << "[" << index++ << "] " << goat.get_name() << " (Age: " 
+            << goat.get_age() << ", Color: " << goat.get_color() << ")" << endl;
+    }
+}
+
 void add_goat(list<Goat> &trip, string names[], string colors[]) {
     // Generate random name, age, and color for the goat
     string name = names[rand() % SZ_NAMES];
@@ -95,15 +106,7 @@ void add_goat(list<Goat> &trip, string names[], string colors[]) {
 int select_goat(list<Goat> trip) {
     // Check if the trip is empty
     if (trip.empty()) {
-        cout << "No goats in the trip to select." << endl;
         return -1; // Return -1 to indicate no selection
-    }
-
-    // Display the goats in the trip with their indices
-    int index = 1;
-    for (const auto& goat : trip) {
-        cout << "[" << index++ << "] " << goat.get_name() << " (Age: " 
-            << goat.get_age() << ", Color: " << goat.get_color() << ")" << endl;
     }
 
     // Prompt user to select a goat by index
@@ -126,13 +129,6 @@ void delete_goat(list<Goat> &trip) {
     if (trip.empty()) {
         cout << "No goats in the trip to delete." << endl;
         return; // Exit the function if there are no goats
-    }
-
-    // Display the goats in the trip with their indices
-    int index = 1;
-    for (const auto& goat : trip) {
-        cout << "[" << index++ << "] " << goat.get_name() << " (Age: " 
-            << goat.get_age() << ", Color: " << goat.get_color() << ")" << endl;
     }
 
     // Prompt user to select a goat to delete
