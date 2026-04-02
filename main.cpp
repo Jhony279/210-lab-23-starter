@@ -74,4 +74,35 @@ int main_menu() {
     // Return the option the user chose
     return choice;
 }
-// Pausing
+
+void add_goat(list<Goat> &trip, string names[], string colors[]) {
+    // Generate random name, age, and color for the goat
+    string name = names[rand() % SZ_NAMES];
+    int age = rand() % MAX_AGE + 1; // Age between 1 and MAX_AGE
+    string color = colors[rand() % SZ_COLORS];
+
+    // Create a new goat and add it to the trip
+    Goat new_goat(name, age, color);
+    trip.push_back(new_goat);
+}
+
+void select_goat(list<Goat> trip) {
+    // Display the goats in the trip with their indices
+    int index = 1;
+    for (const auto& goat : trip) {
+        cout << index++ << ". " << goat.get_name() << " (Age: " << goat.get_age() << ", Color: " << goat.get_color() << ")" << endl;
+    }
+
+    // Prompt user to select a goat by index
+    int choice;
+    cout << "Select a goat by number: ";
+    cin >> choice;
+
+    // Validate the user's choice
+    while (choice < 1 || choice > trip.size()) {
+        cout << "Invalid choice. Please select a valid goat number: ";
+        cin >> choice;
+    }
+
+    // Return the selected goat (this function can be modified to return the goat or its index)
+}
