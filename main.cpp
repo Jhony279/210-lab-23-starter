@@ -17,7 +17,7 @@ int main_menu();
 
 int main() {
     srand(time(0));
-    bool again;
+    bool again = true;
 
     // read & populate arrays for names and colors
     ifstream fin("names.txt");
@@ -33,30 +33,28 @@ int main() {
 
     // Loops until user chooses to quit from menu
     while(again){
-        cout << "new loop" << endl;
         int c = main_menu();
 
-        if (c = 1){
+        if (c == 1){
             // add_goat();
             cout << "Adding goat..." << endl;
-        } else if (c = 2){
+        } else if (c == 2){
             // delete_goat();
             cout << "Deleting goat..." << endl;
-        } else if (c = 3){
+        } else if (c == 3){
             // display goats
             cout << "Displaying goats..." << endl;
-        } else if (c = 4){
-            // again = false;
+        } else if (c == 4){
             cout << "Goodbye!" << endl;
+            again = false;
         }
-        
     }
 
     return 0;
 }
 
 int main_menu() {
-    int choice = 0;
+    int choice;
 
     // Print out the menu for the user
     cout << "*** Goata Manager 3001 ***" << endl;
@@ -66,7 +64,6 @@ int main_menu() {
     cout << "[4] quit" << endl;
     cout << "Choice --> ";
     cin >> choice;
-    cout << choice << endl;
 
     // Make sure user's choice is on the menu
     while(choice > 4 || choice < 1){
