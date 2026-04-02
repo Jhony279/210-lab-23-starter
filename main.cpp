@@ -35,19 +35,24 @@ int main() {
     // Loops until user chooses to quit from menu
     while(again){
         int c = main_menu();
+        int selection;
 
         if (c == 1){
             add_goat(trip, names, colors);
             cout << "Adding goat..." << endl;
+
         } else if (c == 2){
             // delete_goat();
             cout << "Deleting goat..." << endl;
+
         } else if (c == 3){
-            int selection = select_goat(trip);
+            selection = select_goat(trip);
+            if (selection == -1) continue; // No goats to display
             cout << "Displaying goats..." << endl;
+
         } else if (c == 4){
-            cout << "Goodbye!" << endl;
             again = false;
+            cout << "Goodbye!" << endl;
         }
     }
 
@@ -97,7 +102,8 @@ int select_goat(list<Goat> trip) {
     // Display the goats in the trip with their indices
     int index = 1;
     for (const auto& goat : trip) {
-        cout << index++ << ". " << goat.get_name() << " (Age: " << goat.get_age() << ", Color: " << goat.get_color() << ")" << endl;
+        cout << "[" << index++ << "] " << goat.get_name() << " (Age: " 
+            << goat.get_age() << ", Color: " << goat.get_color() << ")" << endl;
     }
 
     // Prompt user to select a goat by index
