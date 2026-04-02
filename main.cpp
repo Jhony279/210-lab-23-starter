@@ -37,6 +37,7 @@ int main() {
         int c = main_menu();
         int selection;
 
+        // Call the appropriate function based on the user's choice
         if (c == 1){
             add_goat(trip, names, colors);
 
@@ -61,7 +62,7 @@ int main_menu() {
     int choice;
 
     // Print out the menu for the user
-    cout << "*** Goata Manager 3001 ***" << endl;
+    cout << "\n *** Goata Manager 3001 ***" << endl;
     cout << "[1] Add a goat" << endl;
     cout << "[2] Delete a Goat" << endl;
     cout << "[3] List goats" << endl;
@@ -81,12 +82,13 @@ int main_menu() {
 
 void display_trip(list<Goat> trip) {
     if (trip.empty()) {
-        cout << "No goats in the trip to display." << endl;
+        cout << "\n No goats in the trip to display." << endl;
         return; // Exit the function if there are no goats
     }
 
-    int index = 1;
-    for (const auto& goat : trip) {
+    int index = 1; // start at 1 so user understands the list numbering
+    cout << "\n *** Goat Trip ***" << endl;
+    for (const auto& goat : trip) { // Iterate through the list of goats
         cout << "[" << index++ << "] " << goat.get_name() << " (Age: " 
             << goat.get_age() << ", Color: " << goat.get_color() << ")" << endl;
     }
