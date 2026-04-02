@@ -18,6 +18,7 @@ int main_menu();
 int main() {
     srand(time(0));
     bool again = true;
+    list<Goat> trip;
 
     // read & populate arrays for names and colors
     ifstream fin("names.txt");
@@ -36,13 +37,13 @@ int main() {
         int c = main_menu();
 
         if (c == 1){
-            // add_goat();
+            add_goat(trip, names, colors);
             cout << "Adding goat..." << endl;
         } else if (c == 2){
             // delete_goat();
             cout << "Deleting goat..." << endl;
         } else if (c == 3){
-            // display goats
+            int selection = select_goat(trip);
             cout << "Displaying goats..." << endl;
         } else if (c == 4){
             cout << "Goodbye!" << endl;
@@ -86,7 +87,13 @@ void add_goat(list<Goat> &trip, string names[], string colors[]) {
     trip.push_back(new_goat);
 }
 
-void select_goat(list<Goat> trip) {
+int select_goat(list<Goat> trip) {
+    // Check if the trip is empty
+    if (trip.empty()) {
+        cout << "No goats in the trip to select." << endl;
+        return -1; // Return -1 to indicate no selection
+    }
+
     // Display the goats in the trip with their indices
     int index = 1;
     for (const auto& goat : trip) {
@@ -104,5 +111,6 @@ void select_goat(list<Goat> trip) {
         cin >> choice;
     }
 
-    // Return the selected goat (this function can be modified to return the goat or its index)
+    // Return the index of the selected goat
+    return choice - 1;
 }
