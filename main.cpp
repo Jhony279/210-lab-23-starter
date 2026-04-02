@@ -120,3 +120,34 @@ int select_goat(list<Goat> trip) {
     // Return the index of the selected goat
     return choice - 1;
 }
+
+void delete_goat(list<Goat> &trip) {
+    // Check if the trip is empty
+    if (trip.empty()) {
+        cout << "No goats in the trip to delete." << endl;
+        return; // Exit the function if there are no goats
+    }
+
+    // Display the goats in the trip with their indices
+    int index = 1;
+    for (const auto& goat : trip) {
+        cout << "[" << index++ << "] " << goat.get_name() << " (Age: " 
+            << goat.get_age() << ", Color: " << goat.get_color() << ")" << endl;
+    }
+
+    // Prompt user to select a goat to delete
+    int choice;
+    cout << "Select a goat to delete by number: ";
+    cin >> choice;
+
+    // Validate the user's choice
+    while (choice < 1 || choice > trip.size()) {
+        cout << "Invalid choice. Please select a valid goat number: ";
+        cin >> choice;
+    }
+
+    // Delete the selected goat from the trip
+    auto it = trip.begin();
+    advance(it, choice - 1); // Move iterator to the selected goat
+    trip.erase(it); // Remove the goat from the list
+}
